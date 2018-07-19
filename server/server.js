@@ -12,13 +12,6 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.post('/api/tradeHistory', (req, res) => {
-  const { market, date } = req.body
-  poloniex.returnTradeHistory(market).then(history => res.json(history))
-})
-app.get('/api/currency_pairs', (req, res) => {
-  poloniex.returnOrderBook('all', 0).then(markets => res.json(markets))
-})
 app.get('/api/tickers', (req, res) => {
   poloniex.returnTicker().then(ticker => res.json(ticker))
 })
